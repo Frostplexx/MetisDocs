@@ -1,2 +1,2 @@
 #!/bin/sh
-git push origin `git subtree split --prefix site master`::refs/heads/gh-pages --force
+git push origin `git subtree split --prefix site master`:gh-pages --force
