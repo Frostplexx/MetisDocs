@@ -1,17 +1,4 @@
-# Welcome to MkDocs
+# Welcome to Metis Docs
+Metis --  In ancient Greek religion, was a mythical goddess, an Oceanid nymph, daughter of the Titans Oceanus and Tethys. She is the mother of wisdom and deep thought. This Bot aims to help you manage and track your D&D campaigns.
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
-
-## Project layout
-
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+**Here you will find all the documentation regarding this bot.**

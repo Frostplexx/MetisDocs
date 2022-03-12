@@ -1,3 +1,22 @@
 site_name: Metis Documentation
 theme:
+  icon:
+    repo: fontawesome/brands/github
   name: material
+  logo: assets/logo.png
+  favicon: assets/logo.png
+  features:
+    - header.autohide
+    - navigation.instant
+    - navigation.tabs
+  palette:
+    primary: red
+extra_css:
+  - stylesheets/extra.css
+extra:
+  homepage: https://metisbot.xyz
+repo_url: https://github.com/Frostplexx/DnD_Helper
+repo_name: Frostplexx/DnD_Helper
+plugins:
+  - git-revision-date
+  
