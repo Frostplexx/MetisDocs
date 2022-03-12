@@ -9,6 +9,8 @@ theme:
     - header.autohide
     - navigation.instant
     - navigation.tabs
+    - search.suggest
+    - navigation.sections
   palette:
     primary: red
 extra_css:
@@ -19,4 +21,27 @@ repo_url: https://github.com/Frostplexx/DnD_Helper
 repo_name: Frostplexx/DnD_Helper
 plugins:
   - git-revision-date
-  
+  - search:
+      lang: en
+markdown_extensions:
+  - tables
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+nav:
+  - Home: 'index.md'
+  - Installation: 
+    - Setup: 'installation.md'
+    - Customization: "customization.md"
+    - Deploying: "deployment.md"
+  - Commands: 
+    - Commands: "commands.md"
+    - Campaign: "campaign.md"
+    - Buttons: "buttons.md"
+    - Utility: "utility.md"
+    - Development: "development.md"
