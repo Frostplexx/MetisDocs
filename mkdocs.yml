@@ -49,6 +49,7 @@ nav:
     - Buttons: "commands/buttons.md"
     - Utility: "commands/utility.md"
     - Development: "commands/development.md"
+    - Players: "commands/players.md"
   - Development:
     - Introduction: "development/development.md"
     - Commands: "development/commands.md"
