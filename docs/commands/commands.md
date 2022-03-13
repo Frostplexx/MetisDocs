@@ -39,6 +39,6 @@ export const command: SlashCommand = {
 4. write your command inside the `execute(interaction)` function
 5. run `npm deploy-commands` to register your new command
 6. start your bot. Your command should now be working!
-7. If you want to edit the permissions please look [here](../customization/#permissions)
+7. If you want to edit the permissions please look [here](../../installation/customization/#permissions)
 
 ## 

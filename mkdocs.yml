@@ -11,14 +11,15 @@ theme:
     - navigation.tabs
     - search.suggest
     - navigation.sections
+    - toc.integrate
   palette:
     primary: red
 extra_css:
   - stylesheets/extra.css
 extra:
   homepage: https://metisbot.xyz
-repo_url: https://github.com/Frostplexx/DnD_Helper
-repo_name: Frostplexx/DnD_Helper
+repo_url: https://github.com/Frostplexx/MetisDocs
+repo_name: Frostplexx/MetisDocs
 plugins:
   - git-revision-date
   - search:
@@ -34,15 +35,24 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences
 nav:
-  - Home: 'index.md'
+  - Home: 
+    - Home: 'index.md'
+    - General Info: generalInfo.md
   - Installation: 
-    - Setup: 'installation.md'
-    - Customization: "customization.md"
-    - Google Form: "googleform.md"
-    - Deploying: "deployment.md"
+    - Setup: 'installation/installation.md'
+    - Customization: "installation/customization.md"
+    - Google Form: "installation/googleform.md"
+    - Deploying: "installation/deployment.md"
   - Commands: 
-    - Commands: "commands.md"
-    - Campaign: "campaign.md"
-    - Buttons: "buttons.md"
-    - Utility: "utility.md"
-    - Development: "development.md"
+    - Commands: "commands/commands.md"
+    - Campaign: "commands/campaign.md"
+    - Buttons: "commands/buttons.md"
+    - Utility: "commands/utility.md"
+    - Development: "commands/development.md"
+  - Development:
+    - Introduction: "development/development.md"
+    - Commands: "development/commands.md"
+    - Campaigns: "development/campaigns.md"
+    - Buttons: "development/buttons.md"
+    - Event Handling: "development/events.md"
+    - VPS Settings: "development/vps.md"
