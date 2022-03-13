@@ -38,6 +38,7 @@ nav:
   - Installation: 
     - Setup: 'installation.md'
     - Customization: "customization.md"
+    - Google Form: "googleform.md"
     - Deploying: "deployment.md"
   - Commands: 
     - Commands: "commands.md"
