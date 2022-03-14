@@ -54,6 +54,7 @@ nav:
     - Introduction: "development/development.md"
     - Commands: "development/commands.md"
     - Campaigns: "development/campaigns.md"
+    - Player Flow: "playersignup.md"
     - Buttons: "development/buttons.md"
     - Event Handling: "development/events.md"
     - VPS Settings: "development/vps.md"

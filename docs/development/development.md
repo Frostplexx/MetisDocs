@@ -44,7 +44,7 @@ We also recommend install a linter like eslint, which allows you to write cleane
 If you want to test out test the google form, but cant on the production bot it is recommended to use a tunneling service like ngrok.</br>
 To get started go to <https://ngrok.com/download> and download and install ngrok for your operating system. Now open a terminal and type `ngrok http 3000` this will open a tunnel to <http://localhost:3000>. Now a ui will appear which looks similar to this:
 ![image](https://cdn.discordapp.com/attachments/950686852325711882/952857415597047818/Screenshot_2022-03-14_at_10.14.58.png)
-Copy the URL which forwards to <http://localhost:300>, in this case it is "http://2f64-2a02-810d-d40-65a0-dde3-275-e5f2-f210.ngrok.io" and
+Copy the URL which forwards to <http://localhost:3000>, in this case it is "http://2f64-2a02-810d-d40-65a0-dde3-275-e5f2-f210.ngrok.io" and
 paste it into the `POST_URL` in the google forms script. It should look something like this: 
 
 ```javascript
