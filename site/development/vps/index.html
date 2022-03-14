@@ -743,12 +743,12 @@
 
 
 <h1 id="vps-settings">VPS Settings</h1>
-<p>The Bot is hosted on a fre EC2 instance on AWS running Ubuntu 20.04.4 LTS so a bit of linux knowledge is required. 
+<p>The Bot is hosted on a fre EC2 instance on AWS running Ubuntu 20.04.4 LTS so a bit of linux knowledge is required.
 All Ports on the server are closed except 22 for ssh traffic and 443 for https.
 The server also has an elastic ip so it is always reachable.</p>
-<h3 id="nginx-config">Nginx Config</h3>
+<h2 id="nginx-config">Nginx Config</h2>
 <p>On the server runs nginx configured as a reverse proxy, which lets us establish an https connection, so that the traffic is always encrypted.
-The configuration file can be found in "/etc/nginx/sites-enabled/default" and looks like this: 
+The configuration file can be found in "/etc/nginx/sites-enabled/default" and looks like this:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>##
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a># You should look at the following URL&#39;s in order to grasp a solid understanding
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a># of Nginx configuration files in order to fully unleash the power of Nginx.
@@ -779,7 +779,7 @@ The configuration file can be found in "/etc/nginx/sites-enabled/default" and lo
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        proxy_set_header        X-Real-IP $remote_addr;
 <a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
 <a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>        proxy_set_header        X-Forwarded-Proto $scheme;
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    }
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a> }
 <a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>   location /git {
 <a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>        proxy_pass http://localhost:3000/git;
 <a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>        proxy_set_header        Host $host;
@@ -789,15 +789,15 @@ The configuration file can be found in "/etc/nginx/sites-enabled/default" and lo
 <a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        }
 <a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>}
 </code></pre></div>
-For more help please consult <a href="https://docs.microsoft.com/en-us/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/2-2-install-nginx-configure-it-reverse-proxy">this great Guide by Microsoft</a></p>
-<h3 id="ssl-certificate">SSL Certificate</h3>
+<p>For more help please consult <a href="https://docs.microsoft.com/en-us/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/2-2-install-nginx-configure-it-reverse-proxy">this great Guide by Microsoft</a></p>
+<h2 id="ssl-certificate">SSL Certificate</h2>
 <p>We used Certbot to create the ssl certificate with this command
-<code>certbot certonly --standalone -d myminio.com --staple-ocsp -m test@yourdomain.io --agree-tos</code>.
-This will guide you trough the creation of the the certificate. Afterwards tell nginx in its config where it can find the certificates:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ssl_certificate  /etc/letsencrypt/live/webhook.metisbot.xyz/fullchain.pem;
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ssl_certificate_key  /etc/letsencrypt/live/webhook.metisbot.xyz/privkey.pem; 
-</code></pre></div></p>
-<h3 id="custom-domain">Custom Domain</h3>
+<code>certbot certonly --standalone -d example.com --staple-ocsp -m test@yourdomain.io --agree-tos</code>.
+This will guide you trough the creation of the the certificate. Afterwards tell nginx in its config where it can find the certificates:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ssl_certificate  /etc/letsencrypt/live/webhook.metisbot.xyz/fullchain.pem<span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ssl_certificate_key  /etc/letsencrypt/live/webhook.metisbot.xyz/privkey.pem<span class="p">;</span> 
+</code></pre></div>
+<h2 id="custom-domain">Custom Domain</h2>
 <p>Because we are using a custom domain we created an A record that points webhook.metis.xyz to our server IP.
 Custom domains can be bought cheaply on sites like <a href="https://namecheap.com">namecheap</a> or <a href="https://godaddy.com">godaddy</a></p>
 
@@ -806,7 +806,7 @@ Custom domains can be bought cheaply on sites like <a href="https://namecheap.co
   <small>
     
       Last update:
-      2022-03-13
+      2022-03-14
     
   </small>
 </div>
