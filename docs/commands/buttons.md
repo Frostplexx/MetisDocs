@@ -1,4 +1,4 @@
-# Buttons 
+# Buttons
 These commands modify the state of Buttons
 
 ### disable-button

@@ -3,13 +3,16 @@
 To create a campaign we use Google Forms, because it is the easiest way without hosting an additional website.
 
 ## Creating the google Form
+
 First we need to create the google form. Our current form looks like this:
 ![image](https://cdn.discordapp.com/attachments/950686852325711882/952531731418857552/Screenshot_2022-03-13_at_12-39-38_New_Dungeons_and_Dragons_Campaign.png)
 Go to [forms.google.com](https://forms.google.com) and create a new form. The only thing that you have to keep in mind is, that you'll have to change some settings in the next section if your decide to add or remove sections or if you change the titles.
 
 ## Google Forms Script
+
 The second part of creating the Google Form is programming the part that send the the forms data to our bot. For this click the 3 dots in the top right corner of the google forms editing page and fill in the following script:
-```
+
+```javascript
 var POST_URL = "";
 var TOKEN = "";
 function onSubmit(e) {
@@ -63,8 +66,9 @@ function onSubmit(e) {
     UrlFetchApp.fetch(POST_URL, options);
 };
 ```
-For `POST_URL` you need to fill in the URL your bot is listening to, followed by "/form" (e.g. https://example.com/form). `TOKEN` on the other hand contains the bearer token with which the bot checks if its really coming from your google form. This should be a strong password and it hast to be the same as the `SECRET_KEY` variable that you set for your bot.
-If you changed any of the section while creating the google form, you'll need to change the names of the keys in the "parsed" variable. As you can see the keys are the Titles of the questions but in a more machine readable form. They follow this notation: 
+
+For `POST_URL` you need to fill in the URL your bot is listening to, followed by "/form" (e.g. <https://example.com/form>). `TOKEN` on the other hand contains the bearer token with which the bot checks if its really coming from your google form. This should be a strong password and it hast to be the same as the `SECRET_KEY` variable that you set for your bot.
+If you changed any of the section while creating the google form, you'll need to change the names of the keys in the "parsed" variable. As you can see the keys are the Titles of the questions but in a more machine readable form. They follow this notation:
 
 - Spaces get turned into "_"
 - / & and () are removed
