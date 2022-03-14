@@ -709,6 +709,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../playersignup.md" class="md-nav__link">
+        Player Flow
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../buttons/" class="md-nav__link">
         Buttons
       </a>
@@ -806,7 +820,7 @@ We also recommend install a linter like eslint, which allows you to write cleane
 <p>If you want to test out test the google form, but cant on the production bot it is recommended to use a tunneling service like ngrok.</br>
 To get started go to <a href="https://ngrok.com/download">https://ngrok.com/download</a> and download and install ngrok for your operating system. Now open a terminal and type <code>ngrok http 3000</code> this will open a tunnel to <a href="http://localhost:3000">http://localhost:3000</a>. Now a ui will appear which looks similar to this:
 <img alt="image" src="https://cdn.discordapp.com/attachments/950686852325711882/952857415597047818/Screenshot_2022-03-14_at_10.14.58.png" />
-Copy the URL which forwards to <a href="http://localhost:300">http://localhost:300</a>, in this case it is "http://2f64-2a02-810d-d40-65a0-dde3-275-e5f2-f210.ngrok.io" and
+Copy the URL which forwards to <a href="http://localhost:3000">http://localhost:3000</a>, in this case it is "http://2f64-2a02-810d-d40-65a0-dde3-275-e5f2-f210.ngrok.io" and
 paste it into the <code>POST_URL</code> in the google forms script. It should look something like this: </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kd">var</span> <span class="nx">POST_URL</span> <span class="o">=</span> <span class="s2">&quot;http://2f64-2a02-810d-d40-65a0-dde3-275-e5f2-f210.ngrok.io/form&quot;</span><span class="p">;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kd">var</span> <span class="nx">TOKEN</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
