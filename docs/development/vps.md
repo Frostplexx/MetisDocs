@@ -30,12 +30,12 @@ The configuration file can be found in "/etc/nginx/sites-enabled/default" and lo
 #
 server {
    listen 443 ssl;
-   server_name webhook.metisbot.xyz;
-   ssl_certificate  /etc/letsencrypt/live/webhook.metisbot.xyz/fullchain.pem;
-   ssl_certificate_key  /etc/letsencrypt/live/webhook.metisbot.xyz/privkey.pem; 
+   server_name preview.webhook.metisbot.xyz;
+   ssl_certificate  /etc/letsencrypt/live/preview.webhook.metisbot.xyz/fullchain.pem;
+   ssl_certificate_key  /etc/letsencrypt/live/preview.webhook.metisbot.xyz/privkey.pem;
    ssl_prefer_server_ciphers on;
    location /form {
-        proxy_pass http://localhost:3000/form; 
+        proxy_pass http://localhost:3000/form;
         proxy_set_header        Host $host;
         proxy_set_header        X-Real-IP $remote_addr;
         proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -48,6 +48,15 @@ server {
         proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header        X-Forwarded-Proto $scheme;
         }
+   location /ws {
+        proxy_pass http://localhost:3000/;
+        proxy_set_header        Upgrade $http_upgrade;
+        proxy_set_header        Connection "Upgrade";
+        proxy_set_header        Host $host;
+        proxy_set_header        X-Real-IP $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+        }
 }
 ```
 
@@ -55,14 +64,21 @@ For more help please consult [this great Guide by Microsoft](https://docs.micros
 
 ## SSL Certificate
 
-We used Certbot to create the ssl certificate with this command
-`certbot certonly --standalone -d example.com --staple-ocsp -m test@yourdomain.io --agree-tos`.
-This will guide you trough the creation of the the certificate. Afterwards tell nginx in its config where it can find the certificates:
+We used Certbot to create the ssl certificate. To create the certificate please follow the instructions on [here](https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal).
+In short:
+
+- install cerbot with snap
+- make sure port 80 is open in aws
+- run `cerbot certonly --nginx`
+
+This will create two certificates. Afterwards tell nginx in its config where it can find the certificates:
 
 ```bash
 ssl_certificate  /etc/letsencrypt/live/webhook.metisbot.xyz/fullchain.pem;
 ssl_certificate_key  /etc/letsencrypt/live/webhook.metisbot.xyz/privkey.pem; 
 ```
+
+__Important!__ Don't forget to open port 443 in aws, otherwise your server won't be reachable
 
 ## Custom Domain
 
