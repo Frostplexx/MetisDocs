@@ -797,12 +797,12 @@ The configuration file can be found in "/etc/nginx/sites-enabled/default" and lo
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>#
 <a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>server {
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>   listen 443 ssl;
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>   server_name webhook.metisbot.xyz;
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>   ssl_certificate  /etc/letsencrypt/live/webhook.metisbot.xyz/fullchain.pem;
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>   ssl_certificate_key  /etc/letsencrypt/live/webhook.metisbot.xyz/privkey.pem; 
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>   server_name preview.webhook.metisbot.xyz;
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>   ssl_certificate  /etc/letsencrypt/live/preview.webhook.metisbot.xyz/fullchain.pem;
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>   ssl_certificate_key  /etc/letsencrypt/live/preview.webhook.metisbot.xyz/privkey.pem;
 <a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>   ssl_prefer_server_ciphers on;
 <a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>   location /form {
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        proxy_pass http://localhost:3000/form; 
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        proxy_pass http://localhost:3000/form;
 <a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        proxy_set_header        Host $host;
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        proxy_set_header        X-Real-IP $remote_addr;
 <a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -815,16 +815,31 @@ The configuration file can be found in "/etc/nginx/sites-enabled/default" and lo
 <a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
 <a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        proxy_set_header        X-Forwarded-Proto $scheme;
 <a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>        }
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>}
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>   location /ws {
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>        proxy_pass http://localhost:3000/;
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>        proxy_set_header        Upgrade $http_upgrade;
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>        proxy_set_header        Connection &quot;Upgrade&quot;;
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>        proxy_set_header        Host $host;
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>        proxy_set_header        X-Real-IP $remote_addr;
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>        proxy_set_header        X-Forwarded-Proto $scheme;
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>        }
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>}
 </code></pre></div>
 <p>For more help please consult <a href="https://docs.microsoft.com/en-us/troubleshoot/developer/webapps/aspnetcore/practice-troubleshoot-linux/2-2-install-nginx-configure-it-reverse-proxy">this great Guide by Microsoft</a></p>
 <h2 id="ssl-certificate">SSL Certificate</h2>
-<p>We used Certbot to create the ssl certificate with this command
-<code>certbot certonly --standalone -d example.com --staple-ocsp -m test@yourdomain.io --agree-tos</code>.
-This will guide you trough the creation of the the certificate. Afterwards tell nginx in its config where it can find the certificates:</p>
+<p>We used Certbot to create the ssl certificate. To create the certificate please follow the instructions on <a href="https://certbot.eff.org/instructions?ws=nginx&amp;os=ubuntufocal">here</a>.
+In short:</p>
+<ul>
+<li>install cerbot with snap</li>
+<li>make sure port 80 is open in aws</li>
+<li>run <code>cerbot certonly --nginx</code></li>
+</ul>
+<p>This will create two certificates. Afterwards tell nginx in its config where it can find the certificates:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ssl_certificate  /etc/letsencrypt/live/webhook.metisbot.xyz/fullchain.pem<span class="p">;</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ssl_certificate_key  /etc/letsencrypt/live/webhook.metisbot.xyz/privkey.pem<span class="p">;</span> 
 </code></pre></div>
+<p><strong>Important!</strong> Don't forget to open port 443 in aws, otherwise your server won't be reachable</p>
 <h2 id="custom-domain">Custom Domain</h2>
 <p>Because we are using a custom domain we created an A record that points webhook.metis.xyz to our server IP.
 Custom domains can be bought cheaply on sites like <a href="https://namecheap.com">namecheap</a> or <a href="https://godaddy.com">godaddy</a></p>
