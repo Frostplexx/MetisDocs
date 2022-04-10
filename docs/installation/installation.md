@@ -6,6 +6,7 @@
 * npm
 * A server or something where you can run the bot on.
 * Python
+* gcc or cmake (C/C++ compiler)
 * patience
 * ffmpeg
 

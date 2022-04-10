@@ -80,6 +80,12 @@ ssl_certificate_key  /etc/letsencrypt/live/webhook.metisbot.xyz/privkey.pem;
 
 __Important!__ Don't forget to open port 443 in aws, otherwise your server won't be reachable
 
+**FAQ:**
+
+Q: Server is unreachable even if I configured all the ports correctly
+A: See https://stackoverflow.com/a/54810101
+
+
 ## Custom Domain
 
 Because we are using a custom domain we created an A record that points webhook.metis.xyz to our server IP.
