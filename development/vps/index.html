@@ -840,6 +840,9 @@ In short:</p>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ssl_certificate_key  /etc/letsencrypt/live/webhook.metisbot.xyz/privkey.pem<span class="p">;</span> 
 </code></pre></div>
 <p><strong>Important!</strong> Don't forget to open port 443 in aws, otherwise your server won't be reachable</p>
+<p><strong>FAQ:</strong></p>
+<p>Q: Server is unreachable even if I configured all the ports correctly
+A: See https://stackoverflow.com/a/54810101</p>
 <h2 id="custom-domain">Custom Domain</h2>
 <p>Because we are using a custom domain we created an A record that points webhook.metis.xyz to our server IP.
 Custom domains can be bought cheaply on sites like <a href="https://namecheap.com">namecheap</a> or <a href="https://godaddy.com">godaddy</a></p>
@@ -849,7 +852,7 @@ Custom domains can be bought cheaply on sites like <a href="https://namecheap.co
   <small>
     
       Last update:
-      2022-03-14
+      2022-04-09
     
   </small>
 </div>
