@@ -21,7 +21,6 @@ extra:
 repo_url: https://github.com/Frostplexx/MetisDocs
 repo_name: Frostplexx/MetisDocs
 plugins:
-  - git-revision-date
   - search:
       lang: en
 markdown_extensions:
@@ -56,6 +55,7 @@ nav:
     - Campaigns: "development/campaigns.md"
     - Player Flow: "development/playersingup.md"
     - Buttons: "development/buttons.md"
+    - User Interactions: "development/userInteractions.md"
     - Event Handling: "development/events.md"
     - Music: "development/music.md"
     - VPS Settings: "development/vps.md"

@@ -1,6 +1,6 @@
 # VPS Settings
 
-The Bot is hosted on a fre EC2 instance on AWS running Ubuntu 20.04.4 LTS so a bit of linux knowledge is required.
+The Bot is hosted on a free instance of Oracle Cloud running Ubuntu 20.04.4 LTS so a bit of linux knowledge is required.
 All Ports on the server are closed except 22 for ssh traffic and 443 for https.
 The server also has an elastic ip so it is always reachable.
 
@@ -68,7 +68,7 @@ We used Certbot to create the ssl certificate. To create the certificate please 
 In short:
 
 - install cerbot with snap
-- make sure port 80 is open in aws
+- make sure port 80 is open
 - run `cerbot certonly --nginx`
 
 This will create two certificates. Afterwards tell nginx in its config where it can find the certificates:
@@ -78,13 +78,12 @@ ssl_certificate  /etc/letsencrypt/live/webhook.metisbot.xyz/fullchain.pem;
 ssl_certificate_key  /etc/letsencrypt/live/webhook.metisbot.xyz/privkey.pem; 
 ```
 
-__Important!__ Don't forget to open port 443 in aws, otherwise your server won't be reachable
+__Important!__ Don't forget to open port 443 in your instance settings, otherwise your server won't be reachable
 
-**FAQ:**
+__FAQ:__
 
 Q: Server is unreachable even if I configured all the ports correctly
-A: See https://stackoverflow.com/a/54810101
-
+A: See <https://stackoverflow.com/a/54810101>
 
 ## Custom Domain
 
